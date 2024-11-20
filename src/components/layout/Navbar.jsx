@@ -20,7 +20,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -33,6 +33,14 @@ export default function Navbar() {
     document.body.removeChild(link);
   };
 
+  const scrollProps = {
+    smooth: true,
+    duration: 300,
+    spy: true,
+    offset: -80,
+    activeClass: 'text-secondary',
+  };
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -42,9 +50,8 @@ export default function Navbar() {
       <nav className="container h-20 flex items-center justify-between">
         <Link
           to="home"
-          smooth={true}
-          duration={500}
-          className="text-2xl font-bold text-textPrimary cursor-pointer"
+          {...scrollProps}
+          className="text-2xl font-bold text-textPrimary cursor-pointer hover:text-secondary transition-colors"
         >
           SA
         </Link>
@@ -55,9 +62,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               to={link.to}
-              smooth={true}
-              duration={500}
-              offset={-100}
+              {...scrollProps}
               className="text-textSecondary hover:text-secondary transition-colors cursor-pointer"
             >
               {link.name}
@@ -87,6 +92,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               className="mobile-menu"
             >
               <button
@@ -101,9 +107,7 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     to={link.to}
-                    smooth={true}
-                    duration={500}
-                    offset={-100}
+                    {...scrollProps}
                     className="text-xl text-textSecondary hover:text-secondary transition-colors"
                     onClick={() => setIsOpen(false)}
                   >

@@ -29,6 +29,13 @@ export default function Hero() {
     document.body.removeChild(link);
   };
 
+  const scrollProps = {
+    smooth: true,
+    duration: 300,
+    spy: true,
+    offset: -80,
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative">
       {/* Background gradient */}
@@ -67,6 +74,8 @@ export default function Hero() {
                 ],
                 autoStart: true,
                 loop: true,
+                deleteSpeed: 30,
+                delay: 80,
               }}
             />
           </motion.div>
@@ -85,29 +94,23 @@ export default function Hero() {
           >
             <Link
               to="projects"
-              smooth={true}
-              spy={true}
-              duration={500}
-              offset={-100}
-              className="btn-primary w-full sm:w-auto cursor-pointer"
+              {...scrollProps}
+              className="btn-primary w-full sm:w-auto cursor-pointer transform hover:scale-105 transition-transform"
             >
               View Projects
             </Link>
             
             <Link
               to="contact"
-              smooth={true}
-              spy={true}
-              duration={500}
-              offset={-100}
-              className="btn-secondary w-full sm:w-auto cursor-pointer"
+              {...scrollProps}
+              className="btn-secondary w-full sm:w-auto cursor-pointer transform hover:scale-105 transition-transform"
             >
               Contact Me
             </Link>
 
             <button
               onClick={handleResumeDownload}
-              className="btn-outline w-full sm:w-auto flex items-center justify-center gap-2"
+              className="btn-outline w-full sm:w-auto flex items-center justify-center gap-2 transform hover:scale-105 transition-transform"
             >
               <FaDownload />
               Download Resume
