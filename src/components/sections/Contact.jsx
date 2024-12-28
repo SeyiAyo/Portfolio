@@ -5,19 +5,19 @@ import { HiOutlineMail } from 'react-icons/hi';
 const socialLinks = [
   {
     name: 'Email',
-    href: 'mailto:your.email@example.com',
+    href: 'mailto:oluwaseyiayoola97@gmail.com',
     icon: HiOutlineMail,
     color: 'text-red-500',
   },
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/yourusername',
+    href: 'https://www.linkedin.com/in/oluwaseyi-ayo/',
     icon: FaLinkedin,
     color: 'text-blue-500',
   },
   {
     name: 'GitHub',
-    href: 'https://github.com/yourusername',
+    href: 'https://github.com/SeyiAyo',
     icon: FaGithub,
     color: 'text-gray-400',
   },
@@ -45,8 +45,8 @@ export default function Contact() {
               Get In Touch
             </h2>
             <p className="text-textSecondary text-lg max-w-2xl mx-auto">
-              I'm currently open to new opportunities and collaborations. Whether you have a question
-              or just want to say hi, I'll try my best to get back to you!
+              Based in Lagos, Nigeria. I'm currently open to new opportunities and collaborations.
+              Feel free to reach out via email at oluwaseyiayoola97@gmail.com or phone at +2349068132575.
             </p>
           </div>
 
@@ -149,7 +149,7 @@ export default function Contact() {
                   Location
                 </h3>
                 <p className="text-textSecondary">
-                  Based in Toronto, Canada<br />
+                  Based in Lagos, Nigeria<br />
                   Open to Remote Opportunities
                 </p>
               </div>

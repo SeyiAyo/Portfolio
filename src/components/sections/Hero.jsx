@@ -58,7 +58,7 @@ export default function Hero() {
             className="text-4xl md:text-6xl font-bold text-textPrimary mb-6"
           >
             Hi, I'm{' '}
-            <span className="gradient-text">Seyi Ayoola</span>
+            <span className="gradient-text">Oluwaseyi Ayoola</span>
           </motion.h1>
 
           <motion.div
@@ -69,7 +69,7 @@ export default function Hero() {
               options={{
                 strings: [
                   'Full Stack Developer',
-                  'UI/UX Enthusiast',
+                  'Software Engineer',
                   'Problem Solver'
                 ],
                 autoStart: true,
@@ -84,8 +84,8 @@ export default function Hero() {
             variants={item}
             className="text-textSecondary text-lg mb-12 max-w-2xl mx-auto"
           >
-            I craft elegant solutions to complex problems, specializing in modern web development
-            and user-centric design.
+            Full-stack developer with expertise in designing and implementing innovative, scalable solutions that drive business efficiency. 
+            Proficient in all phases of the software development lifecycle, specializing in frameworks like Django, Laravel, and CodeIgniter.
           </motion.p>
 
           <motion.div

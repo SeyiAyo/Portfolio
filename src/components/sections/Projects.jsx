@@ -3,28 +3,25 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const projects = [
   {
-    title: 'E-commerce Platform',
-    description: 'A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+    title: 'Job Board',
+    description: 'A scalable job marketplace platform connecting job seekers with employers, built with Django and hosted on PythonAnywhere. Features include job posting, application management, and search functionality.',
+    tags: ['Python', 'Django', 'PostgreSQL', 'HTML/CSS'],
     image: '/project1.jpg',
-    github: 'https://github.com',
-    live: 'https://project.com',
+    live: 'https://pandajobs.pythonanywhere.com/',
   },
   {
-    title: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-    tags: ['React', 'Firebase', 'Tailwind CSS', 'DND Kit'],
+    title: 'Attendify',
+    description: 'A responsive web application for daycare attendance management. Streamlines the process of tracking attendance, managing schedules, and generating reports.',
+    tags: ['Laravel', 'MySQL', 'Bootstrap', 'JavaScript'],
     image: '/project2.jpg',
-    github: 'https://github.com',
-    live: 'https://project.com',
+    live: 'https://useattendify.com',
   },
   {
-    title: 'AI Chat Application',
-    description: 'An AI-powered chat application that uses natural language processing to provide intelligent responses and assist users with various tasks.',
-    tags: ['Python', 'TensorFlow', 'React', 'FastAPI'],
+    title: 'PandaBlog',
+    description: 'A blogging platform enabling users to publish and manage content seamlessly. Features include user authentication, content management, and responsive design.',
+    tags: ['PHP', 'CodeIgniter', 'MySQL', 'jQuery'],
     image: '/project3.jpg',
-    github: 'https://github.com',
-    live: 'https://project.com',
+    live: 'https://panda.pythonanywhere.com/',
   },
 ];
 
@@ -91,14 +88,16 @@ export default function Projects() {
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-dark-400/90 rounded-full text-secondary hover:bg-dark-400 transition-colors"
-                    >
-                      <FaGithub size={20} />
-                    </a>
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-dark-400/90 rounded-full text-secondary hover:bg-dark-400 transition-colors"
+                      >
+                        <FaGithub size={20} />
+                      </a>
+                    )}
                     <a
                       href={project.live}
                       target="_blank"
