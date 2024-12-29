@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
+import emailjs from '@emailjs/browser';
+import { useRef, useState } from 'react';
 
 const socialLinks = [
   {
@@ -24,6 +26,60 @@ const socialLinks = [
 ];
 
 export default function Contact() {
+  const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
+
+    try {
+      // Initialize EmailJS
+      emailjs.init('N4HLV5fNI9VjvX8t7');
+      
+      // Add hidden form data for template variables
+      const templateParams = {
+        to_name: 'Seyi', // The recipient's name
+        from_name: form.current.from_name.value,
+        reply_to: form.current.reply_to.value,
+        message: form.current.message.value,
+      };
+
+      console.log('Attempting to send email with form data:', templateParams);
+
+      const result = await emailjs.send(
+        'pandamail', // Replace with your EmailJS service ID
+        'template_contact', // Replace with your EmailJS template ID
+        templateParams,
+        'N4HLV5fNI9VjvX8t7' // Replace with your EmailJS public key
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      setSubmitStatus({
+        type: 'success',
+        message: 'Message sent successfully! I will get back to you soon.',
+      });
+      form.current.reset();
+    } catch (error) {
+      console.error('Failed to send email:', {
+        error: error.message,
+        errorObject: error,
+        serviceId: 'service_pandamail',
+        templateId: 'template_f6y70s4'
+      });
+
+      setSubmitStatus({
+        type: 'error',
+        message: `Failed to send message: ${error.message}. Please try again later.`,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="relative py-20 bg-dark-400/50">
       <div className="absolute inset-0">
@@ -59,7 +115,7 @@ export default function Contact() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="bg-dark-400/30 backdrop-blur-sm rounded-xl p-6 border border-textSecondary/10"
             >
-              <form className="space-y-4">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-textSecondary mb-2">
                     Name
@@ -67,7 +123,7 @@ export default function Contact() {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="from_name"
                     className="input"
                     placeholder="John Doe"
                     required
@@ -81,7 +137,7 @@ export default function Contact() {
                   <input
                     type="email"
                     id="email"
-                    name="email"
+                    name="reply_to"
                     className="input"
                     placeholder="john@example.com"
                     required
@@ -104,10 +160,22 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="btn-primary w-full"
+                  className="btn-primary w-full disabled:opacity-50"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
+                {submitStatus.message && (
+                  <div
+                    className={`mt-4 p-3 rounded ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-500/20 text-green-400'
+                        : 'bg-red-500/20 text-red-400'
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
               </form>
             </motion.div>
 
