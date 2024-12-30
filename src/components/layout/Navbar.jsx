@@ -26,7 +26,7 @@ export default function Navbar() {
 
   const handleResumeDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Seyi Ayoola RESUME 2025.pdf';
+    link.href = '/Seyi Ayoola RESUME 2024.pdf';
     link.download = 'Seyi_Ayoola_Resume.pdf';
     document.body.appendChild(link);
     link.click();
