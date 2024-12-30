@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Head -->
+    <circle cx="256" cy="256" r="240" fill="white"/>
+    
+    <!-- Ears -->
+    <circle cx="120" cy="120" r="60" fill="black"/>
+    <circle cx="392" cy="120" r="60" fill="black"/>
+    
+    <!-- Eyes -->
+    <g transform="translate(256 256)">
+        <!-- Left eye patch -->
+        <ellipse cx="-80" cy="-40" rx="70" ry="60" fill="black"/>
+        <!-- Right eye patch -->
+        <ellipse cx="80" cy="-40" rx="70" ry="60" fill="black"/>
+        
+        <!-- Inner eyes -->
+        <circle cx="-80" cy="-30" r="20" fill="white"/>
+        <circle cx="80" cy="-30" r="20" fill="white"/>
+        
+        <!-- Eye shine -->
+        <circle cx="-75" cy="-35" r="8" fill="#ffffff"/>
+        <circle cx="85" cy="-35" r="8" fill="#ffffff"/>
+    </g>
+    
+    <!-- Nose -->
+    <path d="M256 280 L236 300 Q256 320 276 300 Z" fill="black"/>
+    
+    <!-- Mouth -->
+    <path d="M216 320 Q256 360 296 320" stroke="black" stroke-width="8" fill="none"/>
+</svg>
